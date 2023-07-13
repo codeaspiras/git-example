@@ -83,3 +83,10 @@ section:last-child {
 .copyright a:hover {
     color: #506463;
 }
+
+/** Swiper Default **/
+
+.swiper {
+    width: 600px;
+    height: 300px;
+}
