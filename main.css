@@ -92,4 +92,5 @@ section:last-child {
 
 .swiper img {
     width: 100%;
+    filter: grayscale(1);
 }
