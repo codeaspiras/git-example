@@ -87,7 +87,8 @@ section:last-child {
 /** Swiper Default **/
 
 .swiper {
-    height: 400px;
+    width: 100%;
+    aspect-ratio: 6 / 4;
 }
 
 .swiper img {
