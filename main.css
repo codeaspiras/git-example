@@ -69,7 +69,8 @@ section:last-child {
     border: 3px dashed #8686866e;
     background: #f0eee8;
     width: 300px;
-    padding: 12px;
+    max-width: 90%;
+    padding: 12px 4px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 12px;
@@ -82,4 +83,16 @@ section:last-child {
 
 .copyright a:hover {
     color: #506463;
+}
+
+/** Swiper Default **/
+
+.swiper {
+    width: 100%;
+    aspect-ratio: 6 / 4;
+}
+
+.swiper img {
+    width: 100%;
+    filter: grayscale(1);
 }
