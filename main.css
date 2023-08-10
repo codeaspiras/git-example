@@ -111,11 +111,13 @@ section:last-child {
 #record-videos.swiper iframe {
     margin: auto auto;
     display: block;
+    user-select: none;
 }
 
 #record-videos.swiper .swiper-slide:not(.swiper-slide-active) {
     transform: scale(0.75);
     opacity: .75;
+    pointer-events: none;
 }
 
 #record-videos.swiper .swiper-slide-active {
