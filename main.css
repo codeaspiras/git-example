@@ -1,5 +1,5 @@
 :root {
-    --swiper-theme-color: #cccccc
+    --swiper-theme-color: #cccccc !important;
 }
 
 html, body {
