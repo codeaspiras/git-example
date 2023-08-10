@@ -1,3 +1,7 @@
+:root {
+    --swiper-theme-color: #cccccc
+}
+
 html, body {
     display: block;
     width: 100%;
