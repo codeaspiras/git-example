@@ -1,4 +1,5 @@
-const swiper = new Swiper('#intro', {
+(function() {
+  const swiper = new Swiper('#intro', {
     autoplay: {
         delay: 3000,
         pauseOnMouseEnter: true,
@@ -10,3 +11,4 @@ const swiper = new Swiper('#intro', {
       prevEl: '.swiper-button-prev',
     },
   });
+})();
