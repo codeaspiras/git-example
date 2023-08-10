@@ -93,10 +93,31 @@ section:last-child {
 
 .swiper {
     width: 100%;
+}
+
+#intro.swiper {
     aspect-ratio: 6 / 4;
 }
 
-.swiper img {
+#intro.swiper img {
     width: 100%;
     filter: grayscale(1);
+}
+
+#record-videos.swiper {
+    aspect-ratio: 6 / 5;
+}
+
+#record-videos.swiper iframe {
+    margin: auto auto;
+    display: block;
+}
+
+#record-videos.swiper .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.75);
+    opacity: .75;
+}
+
+#record-videos.swiper .swiper-slide-active {
+    transform: scale(1.3);
 }
