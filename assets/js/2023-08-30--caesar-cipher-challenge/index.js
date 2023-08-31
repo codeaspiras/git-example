@@ -6,6 +6,7 @@ console.log(arr[10 % 10]);
 
 // solving challenge: https://edabit.com/challenge/a33jdGXkaQRtK9ZTs
 const ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+// other way: const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split("");
 const TRANSFORMATION_METHOD_UPPER_CASE = 'toUpperCase';
 
 function getAlphabetLetter(index) {
