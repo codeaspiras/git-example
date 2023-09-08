@@ -26,27 +26,27 @@
         </div>
         <ul class="nav nav-tabs" id="multiple-tab-contents" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="content-1-tab" data-bs-toggle="tab" data-bs-target=".content-1" type="button" role="tab" aria-selected="true">
+            <button class="nav-link active" id="content-1-tab" data-bs-toggle="tab" data-bs-target=".content-1" type="button" role="tab" aria-selected="true" data-current-target=".content-1">
                 Tab 1
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="content-2-tab" data-bs-toggle="tab" data-bs-target=".content-2" type="button" role="tab" aria-selected="false">
+            <button class="nav-link" id="content-2-tab" data-bs-toggle="tab" data-bs-target=".content-2" type="button" role="tab" aria-selected="false" data-current-target=".content-1">
                 Tab 2
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="content-3-tab" data-bs-toggle="tab" data-bs-target=".content-3" type="button" role="tab" aria-selected="false">
+            <button class="nav-link" id="content-3-tab" data-bs-toggle="tab" data-bs-target=".content-3" type="button" role="tab" aria-selected="false" data-current-target=".content-1">
                 Tab 3
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="content-4-tab" data-bs-toggle="tab" data-bs-target=".content-4" type="button" role="tab" aria-selected="false">
+            <button class="nav-link" id="content-4-tab" data-bs-toggle="tab" data-bs-target=".content-4" type="button" role="tab" aria-selected="false" data-current-target=".content-1">
                 Tab 4
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="content-5-tab" data-bs-toggle="tab" data-bs-target=".content-5" type="button" role="tab" aria-selected="false">
+            <button class="nav-link" id="content-5-tab" data-bs-toggle="tab" data-bs-target=".content-5" type="button" role="tab" aria-selected="false" data-current-target=".content-1">
                 Tab 5
             </button>
           </li>
@@ -81,6 +81,11 @@
 
                     // targetQuery is the value inserted on <button ... data-bs-target="">
                     const targetQuery = evt.target.getAttribute('data-bs-target');
+
+                    // set the targetQuery on the attribute <button ... data-current-target=""> of all buttons
+                    document.querySelectorAll(tabButtonsQuerySelector).forEach((btn) => {
+                        btn.setAttribute('data-current-target', targetQuery);
+                    });
                     
                     // for each data-bs-target, we want to add activeClass on the target and remove from its siblings
                     document.querySelectorAll(targetQuery).forEach((target) => {
