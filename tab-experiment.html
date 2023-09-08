@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+
+    </head>
+    <body>
+        <div class="tab-content">
+            <div class="tab-pane active content-1" role="tabpanel" aria-labelledby="content-1-tab" tabindex="0">
+                My Tab 1 Content 2
+            </div>
+            <div class="tab-pane content-2" role="tabpanel" aria-labelledby="content-2-tab" tabindex="0">
+                My Tab 2 Content 2
+            </div>
+            <div class="tab-pane content-3" role="tabpanel" aria-labelledby="content-3-tab" tabindex="0">
+                My Tab 3 Content 2
+            </div>
+            <div class="tab-pane content-4" role="tabpanel" aria-labelledby="content-4-tab" tabindex="0">
+                My Tab 4 Content 2
+            </div>
+            <div class="tab-pane content-5" role="tabpanel" aria-labelledby="content-5-tab" tabindex="0">
+                My Tab 5 Content 2
+            </div>
+        </div>
+        <ul class="nav nav-tabs" id="multiple-tab-contents" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="content-1-tab" data-bs-toggle="tab" data-bs-target=".content-1" type="button" role="tab" aria-selected="true">
+                Tab 1
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="content-2-tab" data-bs-toggle="tab" data-bs-target=".content-2" type="button" role="tab" aria-selected="false">
+                Tab 2
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="content-3-tab" data-bs-toggle="tab" data-bs-target=".content-3" type="button" role="tab" aria-selected="false">
+                Tab 3
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="content-4-tab" data-bs-toggle="tab" data-bs-target=".content-4" type="button" role="tab" aria-selected="false">
+                Tab 4
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="content-5-tab" data-bs-toggle="tab" data-bs-target=".content-5" type="button" role="tab" aria-selected="false">
+                Tab 5
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active content-1" role="tabpanel" aria-labelledby="content-1-tab" tabindex="0">
+                My Tab 1 Content 1
+            </div>
+            <div class="tab-pane content-2" role="tabpanel" aria-labelledby="content-2-tab" tabindex="0">
+                My Tab 2 Content 1
+            </div>
+            <div class="tab-pane content-3" role="tabpanel" aria-labelledby="content-3-tab" tabindex="0">
+                My Tab 3 Content 1
+            </div>
+            <div class="tab-pane content-4" role="tabpanel" aria-labelledby="content-4-tab" tabindex="0">
+                My Tab 4 Content 1
+            </div>
+            <div class="tab-pane content-5" role="tabpanel" aria-labelledby="content-5-tab" tabindex="0">
+                My Tab 5 Content 1
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            const activeClass = 'active';
+            const tabButtonsQuerySelector = '#multiple-tab-contents button';
+            // for each button, we want to add a 'click' event listener to override boostrap behavior
+            document.querySelectorAll(tabButtonsQuerySelector).forEach((tabButton) => {
+                tabButton.addEventListener('click', (evt) => {
+                    evt.preventDefault();
+                    evt.stopPropagation();
+
+                    // targetQuery is the value inserted on <button ... data-bs-target="">
+                    const targetQuery = evt.target.getAttribute('data-bs-target');
+                    
+                    // for each data-bs-target, we want to add activeClass on the target and remove from its siblings
+                    document.querySelectorAll(targetQuery).forEach((target) => {
+                        // add activeClass
+                        enableTabContent(target);
+
+                        // remove activeClass from previous siblings
+                        disablePreviousSiblings(target.previousElementSibling);
+
+                        // remove activeClass from next siblings
+                        disableNextSiblings(target.nextElementSibling);
+                    })
+                });
+            });
+
+            function enableTabContent(target) {
+                // if it already have the class, ignore it
+                if (target.className.includes(' '  + activeClass)) {
+                    return;
+                }
+
+                // if it doesn't, append the activeClass in the end
+                target.className = target.className + ' ' + activeClass;
+            }
+
+            function disablePreviousSiblings(sibling) {
+                // if there's no previous sibling, stop
+                if (!sibling) {
+                    return;
+                }
+
+                // if the previous sibling has the active class
+                if (sibling.className.includes(' ' + activeClass)) {
+                    // remove it
+                    sibling.className = sibling.className.replace(' ' + activeClass, '');
+                }
+
+                // check the "next" previous siblings (recursive function)
+                disablePreviousSiblings(sibling.previousElementSibling);
+            }
+
+            function disableNextSiblings(sibling) {
+                // if there's no next sibling, stop
+                if (!sibling) {
+                    return;
+                }
+
+                // if the next sibling has the active class
+                if (sibling.className.includes(' ' + activeClass)) {
+                    // remove it
+                    sibling.className = sibling.className.replace(' ' + activeClass, '');
+                }
+
+                // check the "next" next siblings (recursive function)
+                disableNextSiblings(sibling.nextElementSibling);
+            }
+        </script>
+    </body>
+</html>
