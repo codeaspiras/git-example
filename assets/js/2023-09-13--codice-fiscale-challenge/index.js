@@ -28,7 +28,7 @@ function fiscalCode(person) {
 function splitIntoVowelsAndConsonants(word) {
 	let wordVowels = [], wordConsonants = [];
 	word = word.toUpperCase();
-    
+
 	for (let index = 0; index < word.length; index++) {
 		const char = word.charAt(index);
 		if (vowels.includes(char)) {
@@ -69,10 +69,6 @@ function getSurnameCode(surname) {
 
 function getNameCode(name) {
 	let splittedName = splitIntoVowelsAndConsonants(name);
-	if (splittedName.consonants.length === 3) {
-		return splittedName.consonants.join('');
-	}
-	
 	if (splittedName.consonants.length > 3) {
 		return splittedName.consonants[0] + splittedName.consonants[2] + splittedName.consonants[3];
 	}
